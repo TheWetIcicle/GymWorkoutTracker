@@ -4,6 +4,9 @@ require('dotenv').config()
 //This requires the express package
 const express = require('express')
 
+//This requires the mongoose package
+const mongoose = require('mongoose')
+
 //This requires the workoutRoutes file Router 
 const routes = require('./routes/workoutRoutes')
 
@@ -23,9 +26,16 @@ app.use((req,res,next) => {
 //Uses the router from workoutRoutes, which is in a different file to look cleaner
 app.use('/api/workoutRoutes', routes)
 
-//Listens for Requests
-app.listen(process.env.PORT, () => {
-    console.log('Listening on port 4000!!')
-})
+//Connects to DB
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        //Listens for Requests
+        app.listen(process.env.PORT, () => {
+            console.log('Connected to DB and listening for requests')
+        })
+    })
+    .catch((error) => {
+        console.log(error)
+    })
 
 
