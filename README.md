@@ -1,4 +1,4 @@
-# Gym Workout and Buddy Tracker
+# Gym Buddy and Workout Tracker
 Hello World!
 
 This is my first Full Stack Project using the MERN Stack. I have used React with JS for the frontend, MongoDB for the NoSQL Backend, and also used Node.js and Express for the backend and frontend interactions. 
